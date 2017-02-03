@@ -8,8 +8,6 @@
 # 20170203	GH	Solved
 #
 
-require 'byebug'
-
 def min_hash(prices)
 	  prices_copy = prices.dup
 		min_price = prices_copy.min
