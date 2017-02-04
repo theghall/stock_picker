@@ -38,7 +38,7 @@ def max_hash(prices)
 
 end
 
-def print_profit_days(prices, min_hash, max_hash)
+def pair_days(prices, min_hash, max_hash)
 
 	optimal_days = []
 	other_days = []
@@ -88,13 +88,22 @@ def print_profit_days(prices, min_hash, max_hash)
 		end
 	end				
 
+	pair_days_hash = {"optimal_days" => optimal_days, "other_days" => other_days}
+
+end
+
+def print_profit_days(prices, pair_days_hash)
+
+  optimal_days = pair_days_hash["optimal_days"]
+	other_days = pair_days_hash["other_days"]
+
 	if !optimal_days.empty? then
 		opt_buy_date = optimal_days[0]
 		opt_sell_date = optimal_days[1]
 		opt_buy_price = prices[opt_buy_date]
 		opt_sell_price = prices[opt_sell_date]
 
-		puts "For quickest profit buy on day #{opt_buy_date+1} at $#{opt_buy_price}/share and sell on day #{opt_sell_date+1} at $#{opt_sell_price}/share"
+		puts "\n\nFor quickest profit buy on day #{opt_buy_date+1} at $#{opt_buy_price}/share and sell on day #{opt_sell_date+1} at $#{opt_sell_price}/share"
 
 		if !other_days.empty?
 
@@ -124,14 +133,15 @@ def stock_picker(prices)
 	if min_hash["min_price"] == max_hash["max_price"] 
 		puts "The stock price does not rise in the given period."
 	else
-			print_profit_days(prices, min_hash, max_hash)
+		  pair_days_hash = pair_days(prices, min_hash, max_hash)
+			print_profit_days(prices, pair_days_hash)
 	end
 
 end
 
 def valid_stock_arr?(array)
-	# if any non-numeric characters excper for ',' or a zero stock value then its not valid 
-	!(array =~ /[^0-9 ,]/) && !(array =~ /^0[ ,]/) && !(array =~ /[ ,]0[ ,]/)  && !(array =~ /[,]0$/)
+	# if any non-numeric characters except for ',' or a zero stock value then its not valid 
+	!(array =~ /[^0-9 ,]/) && !(array =~ /[ ,]*0[^1-9]/) && !(array =~ /[,]0$/)
 end
 
 valid_input = false
