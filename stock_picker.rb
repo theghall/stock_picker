@@ -102,8 +102,9 @@ def print_profit_days(prices, pair_days_hash)
 		opt_sell_date = optimal_days[1]
 		opt_buy_price = prices[opt_buy_date]
 		opt_sell_price = prices[opt_sell_date]
+    profit = opt_sell_price - opt_buy_price
 
-		puts "\n\nFor quickest profit buy on day #{opt_buy_date+1} at $#{opt_buy_price}/share and sell on day #{opt_sell_date+1} at $#{opt_sell_price}/share"
+		puts "\n\nFor quickest profit buy on day #{opt_buy_date+1} at $#{opt_buy_price}/share and sell on day #{opt_sell_date+1} at $#{opt_sell_price}/share for a profit of $#{profit}"
 
 		if !other_days.empty?
 
@@ -116,8 +117,9 @@ def print_profit_days(prices, pair_days_hash)
 				buy_price = prices[buy_date]
 				sell_date = other_days[index+1]
 				sell_price = prices[sell_date]
+				profit = sell_price - buy_price
 	
-				puts "Buy on day #{buy_date+1} at $#{buy_price}/share and sell on day #{sell_date+1} at $#{sell_price}/share"
+				puts "Buy on day #{buy_date+1} at $#{buy_price}/share and sell on day #{sell_date+1} at $#{sell_price}/share for a profit of $#{profit}"
 
 				index += 2
 			end
