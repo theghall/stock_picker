@@ -6,7 +6,7 @@ the max price. So, for 1,7,1,1,7  the output will be:
 For quickest profit buy on day 1 at $1/share and sell on day 2 at $7/share
 
 Other days to buy/sell
-Buy on day 3 at $1/share and sell on day 5 at $7/share (It should probably not report this but I need to move on)
+Buy on day 3 at $1/share and sell on day 5 at $7/share (should not report this but I need to move on)
 Buy on day 4 at $1/share and sell on day 5 at $7/share
 
 When run it will ask you to input a comma-delimited list of stock prices.  
